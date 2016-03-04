@@ -298,3 +298,15 @@ class NetDisk(object):
 
     def mkdir(self, path):
         return self._create(path, [], "", isdir=1)
+
+
+    def share(self, fs_id):
+        params = dict(fid_list=[fs_id], schannel=4, channel_list=[], pwd='abcd')
+        # Get token
+        
+        url = "http://pan.baidu.com/share/set?channel=chunlei&clienttype=0&web=1&bdstoken=%s&channel=chunlei&clienttype=0&web=1&app_id=250528" %token
+        print url
+        print params
+        ret = self.api_request(url, method="POST", extra_data=params)
+        return ret
+        
